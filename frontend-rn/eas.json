@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">= 5.9.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://she-safe-ai-backend.onrender.com"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://she-safe-ai-backend.onrender.com"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

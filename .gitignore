@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Environment / secrets — NEVER commit
+.env
+.env.*
+!.env.example
+
+# Build output
+.expo/
+dist/
+build/
+*.apk
+*.aab
+.easignore
+web-build/
+.web-test/
+.web-build/
+
+# Databases
+*.db
+*.db-journal
+*.sqlite
+backend/data/
+
+# Logs
+*.log
+backend.log
+install*.log
+export.log
+webexport.log
+
+# OS
+.DS_Store
+Thumbs.db

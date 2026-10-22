@@ -1,0 +1,31 @@
+# Render Blueprint — SHE SAFE AI backend
+#
+# One-click deploy:
+#   1. Push this repo to GitHub
+#   2. Render dashboard → New + → Blueprint → pick the repo
+#   3. Render reads this file and creates the web service automatically
+#
+# Manual alternative (New + → Web Service):
+#   Root Directory : backend
+#   Build Command  : pip install -r requirements.txt
+#   Start Command  : uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+services:
+  - type: web
+    name: she-safe-ai-backend
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      # Free tier has an ephemeral filesystem: the SQLite file is recreated
+      # (and re-seeded) whenever the service restarts. That is fine for demo
+      # data, but saved places are lost on restart.
+      - key: DB_PATH
+        value: /tmp/she_safe.db
+      - key: CORS_ORIGINS
+        value: "*"
